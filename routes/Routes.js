@@ -1,0 +1,20 @@
+const register = require('../controlles/register')
+const login = require('../controlles/login')
+const todoitems = require('../controlles/todoitem')
+const item = require('../controlles/item')
+const itemdelet = require('../controlles/deletitem')
+const allitem = require('../controlles/allitem')
+const updateitem = require('../controlles/updateitem')
+const middleware = require('../middleware/tokenverify')
+const express = require('express')
+const route = express.Router()
+
+route.post('/register',register)
+route.post('/login',login)
+route.get('/todo',middleware,todoitems)
+route.post('/:id',item)
+route.delete('/:id',itemdelet) 
+route.get('/:id',allitem)
+route.put('/:id',updateitem)
+
+module.exports = route
